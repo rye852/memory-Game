@@ -1,0 +1,135 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 400;
+  margin: -20px 0 0;
+  position: relative;
+}
+.pop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  padding: 20px;
+  transition: 0.3s;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 8px;
+  z-index: 6;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background-color: black;
+  transition: opacity 0.3s;
+  opacity: .5;
+  transform: scale(0);
+}
+.pop .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  padding: 10px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  color: white;
+}
+.pop p span {
+  color: red;
+  font-weight: bold;
+}
+.info {
+  max-width: 1080px;
+  margin: 20px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  font-size: 24px;
+  overflow: hidden;
+  border: 2px solid #222;
+  border-radius: 6px;
+}
+.info > div:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.info > div:first-of-type > span {
+  display: inline-block;
+  margin-right: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 30px;
+  color: #111;
+}
+.info > div:last-of-type > span {
+  color: red;
+  font-weight: bold;
+}
+.memory-game {
+  max-width: 1080px;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.memory-game .game-block {
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  cursor: pointer;
+  border-radius: 6px;
+  flex-basis: calc(25% - 7.5px);
+}
+
+.memory-game .game-block.is-turn {
+  pointer-events: none;
+  transform: rotateY(-180deg);
+}
+.memory-game .game-block.done {
+  transform: rotateY(-180deg);
+  pointer-events: none;
+}
+.memory-game .game-block > div {
+  border-radius: 8px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+.memory-game .game-block .front {
+  background-color: #222;
+  color: white;
+  font-size: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.memory-game .game-block .back {
+  overflow: hidden;
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+.memory-game .game-block .back > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
